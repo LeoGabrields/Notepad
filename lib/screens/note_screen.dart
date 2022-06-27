@@ -79,8 +79,8 @@ class _NoteScreenState extends State<NoteScreen> {
                       initialValue: _dataMap['title'],
                       textInputAction: TextInputAction.next,
                       style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 19,
                       ),
                       decoration: const InputDecoration(
                         border: InputBorder.none,

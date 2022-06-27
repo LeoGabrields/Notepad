@@ -54,10 +54,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   onChanged: (value) => noteProvider.filter(value),
                   textCapitalization: TextCapitalization.words,
                   decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.search),
-                    hintText: 'Search notes',
-                  ),
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
+                      hintText: 'Search notes',
+                      hintStyle: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey,
+                      )),
                 ),
               ),
               SizedBox(
@@ -66,7 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.builder(
                   itemCount: noteProvider.filterList.length,
                   itemBuilder: (ctx, index) {
-                    final note = noteProvider.filterList.reversed.toList()[index];
+                    final note =
+                        noteProvider.filterList.reversed.toList()[index];
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 15),
                       child: Dismissible(
@@ -91,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: () => Navigator.of(context)
                               .pushNamed('NoteScreen', arguments: note),
                           child: Container(
-                            height: 75,
+                            height: MediaQuery.of(context).size.height * 0.10,
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
@@ -99,7 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 15),
+                                vertical: 10,
+                                horizontal: 15,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment:
@@ -108,13 +114,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Text(
                                     note.title,
                                     style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                   Text(
                                     note.date,
                                     style: const TextStyle(
-                                        color: Colors.grey, fontSize: 12),
+                                      color: Colors.grey,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ],
                               ),

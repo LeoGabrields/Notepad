@@ -8,7 +8,7 @@ class NoteProvider with ChangeNotifier {
   List<NoteModel> _noteList = [];
   List<NoteModel> filterList = [];
 
-  void filter(String text) {
+  void filter(String text) async {
     if (text.isEmpty) {
       filterList = _noteList;
     } else {
@@ -18,6 +18,7 @@ class NoteProvider with ChangeNotifier {
             );
       }).toList();
     }
+
     notifyListeners();
   }
 
@@ -26,11 +27,10 @@ class NoteProvider with ChangeNotifier {
 
     _noteList = dataList
         .map((item) => NoteModel(
-              id: item['id'],
-              title: item['title'],
-              content: item['content'],
-              date: item['date']
-            ))
+            id: item['id'],
+            title: item['title'],
+            content: item['content'],
+            date: item['date']))
         .toList();
     filterList = _noteList;
     notifyListeners();
@@ -76,10 +76,11 @@ class NoteProvider with ChangeNotifier {
 
   void removeNote(NoteModel note) {
     DbSql.delete(note.id);
-    int index = _noteList.indexWhere((n) => n.id == note.id);
+    int index = filterList.indexWhere((n) => n.id == note.id);
+
     if (index >= 0) {
-      final note = _noteList[index];
-      _noteList.remove(note);
+      filterList.removeWhere((n) => n.id == note.id);
+      _noteList.removeWhere((n) => n.id == note.id);
       notifyListeners();
     }
   }
