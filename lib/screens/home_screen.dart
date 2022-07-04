@@ -74,59 +74,61 @@ class _HomeScreenState extends State<HomeScreen> {
                           noteProvider.filterList.reversed.toList()[index];
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 15),
-                        child: Dismissible(
-                          key: UniqueKey(),
-                          direction: DismissDirection.endToStart,
-                          onDismissed: (_) {
-                            noteProvider.removeNote(note);
-                          },
-                          background: Container(
-                            padding: const EdgeInsets.all(15),
-                            alignment: Alignment.centerRight,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.red,
-                            ),
-                            child: const Icon(
-                              Icons.delete,
-                              color: Colors.white,
-                            ),
-                          ),
-                          child: GestureDetector(
-                            onTap: () => Navigator.of(context)
-                                .pushNamed('NoteScreen', arguments: note),
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.10,
-                              width: double.infinity,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Dismissible(
+                            key: UniqueKey(),
+                            direction: DismissDirection.endToStart,
+                            onDismissed: (_) {
+                              noteProvider.removeNote(note);
+                            },
+                            background: Container(
+                              padding: const EdgeInsets.all(15),
+                              alignment: Alignment.centerRight,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Colors.grey[200],
+                                color: Colors.red,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 15,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      note.title,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15,
+                              child: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                            child: GestureDetector(
+                              onTap: () => Navigator.of(context)
+                                  .pushNamed('NoteScreen', arguments: note),
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.10,
+                                width: double.infinity,
+                                color: Colors.grey[200],
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 15,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        note.title,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      note.date,
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
+                                      Text(
+                                        note.date,
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
