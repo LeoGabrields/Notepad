@@ -1,14 +1,14 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:notepad/data/database.dart';
+import 'package:notepad/data/db_sql.dart';
 import 'package:notepad/models/note_model.dart';
 
 class NoteProvider with ChangeNotifier {
   List<NoteModel> _noteList = [];
   List<NoteModel> filterList = [];
 
-  void filter(String text) async {
+  void search(String text) async {
     if (text.isEmpty) {
       filterList = _noteList;
     } else {
@@ -18,7 +18,6 @@ class NoteProvider with ChangeNotifier {
             );
       }).toList();
     }
-
     notifyListeners();
   }
 

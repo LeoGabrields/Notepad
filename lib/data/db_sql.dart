@@ -26,6 +26,10 @@ class DbSql {
 
   static Future delete(String id) async {
     final db = await DbSql.database();
-    db.delete('note', where: 'id = ?', whereArgs: [id]);
+    try {
+      db.delete('note', where: 'id = ?', whereArgs: [id]);
+    } catch (err) {
+      return null;
+    }
   }
 }
