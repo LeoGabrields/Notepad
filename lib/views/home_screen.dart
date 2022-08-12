@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notepad/controller/note_controller.dart';
 import 'package:provider/provider.dart';
-import '../provider/note_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,12 +13,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<NoteProvider>(context, listen: false).loadNotes();
+    Provider.of<NoteController>(context, listen: false).loadNotes();
   }
 
   @override
   Widget build(BuildContext context) {
-    final noteProvider = Provider.of<NoteProvider>(context);
+    final noteProvider = Provider.of<NoteController>(context);
 
     return SafeArea(
       child: GestureDetector(

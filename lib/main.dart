@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:notepad/provider/note_provider.dart';
-import 'package:notepad/screens/note_screen.dart';
+import 'package:notepad/controller/note_controller.dart';
 import 'package:provider/provider.dart';
-import 'screens/home_screen.dart';
+import 'views/home_screen.dart';
+import 'views/note_screen.dart';
 
 main() => runApp(const MyApp());
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     );
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return ChangeNotifierProvider(
-      create: (context) => NoteProvider(),
+      create: (context) => NoteController(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Poppins'),

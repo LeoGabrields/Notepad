@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:notepad/models/note_model.dart';
 import 'package:provider/provider.dart';
-import '../provider/note_provider.dart';
+
+import '../controller/note_controller.dart';
+
 
 
 class NoteScreen extends StatefulWidget {
@@ -31,7 +33,7 @@ class _NoteScreenState extends State<NoteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final noteProvider = Provider.of<NoteProvider>(context);
+    final noteProvider = Provider.of<NoteController>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,

@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:notepad/data/db_sql.dart';
 import 'package:notepad/models/note_model.dart';
 
-class NoteProvider with ChangeNotifier {
+class NoteController with ChangeNotifier {
   List<NoteModel> _noteList = [];
   List<NoteModel> filterList = [];
 
