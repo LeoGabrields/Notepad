@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:notepad/controller/note_controller.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomePages extends StatefulWidget {
+  const HomePages({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePages> createState() => _HomePagesState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePagesState extends State<HomePages> {
   @override
   void initState() {
     super.initState();

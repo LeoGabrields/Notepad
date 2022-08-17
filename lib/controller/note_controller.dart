@@ -21,20 +21,17 @@ class NoteController with ChangeNotifier {
     notifyListeners();
   }
 
+  
   void loadNotes() async {
     final dataList = await DbSql.getData('note');
 
-    _noteList = dataList
-        .map((item) => NoteModel(
-            id: item['id'],
-            title: item['title'],
-            content: item['content'],
-            date: item['date']))
-        .toList();
+    _noteList = dataList.map((item) => NoteModel.fromMap(item)).toList();
     filterList = _noteList;
     notifyListeners();
   }
 
+  
+  
   void saveNote(Map<String, dynamic> data) async {
     bool hasId = data['id'] != null;
 

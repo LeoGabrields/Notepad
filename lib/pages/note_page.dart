@@ -6,14 +6,14 @@ import '../controller/note_controller.dart';
 
 
 
-class NoteScreen extends StatefulWidget {
-  const NoteScreen({Key? key}) : super(key: key);
+class NotePage extends StatefulWidget {
+  const NotePage({Key? key}) : super(key: key);
 
   @override
-  State<NoteScreen> createState() => _NoteScreenState();
+  State<NotePage> createState() => _NotePageState();
 }
 
-class _NoteScreenState extends State<NoteScreen> {
+class _NotePageState extends State<NotePage> {
   final _formKey = GlobalKey<FormState>();
   final Map<String, dynamic> _dataMap = {};
 
